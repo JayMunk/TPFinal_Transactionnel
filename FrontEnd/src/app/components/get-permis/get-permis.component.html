@@ -1,0 +1,36 @@
+<div class="wrapper fadeInDown">
+  <div id="formContent">
+    <div class="fadeIn first">
+      <img src="./../../../assets/images/logo-MSSS.jpg" id="icon" alt="logo-MSSS" />
+      <h3>Recevoir le permis par courriel</h3>
+    </div>
+    <div class="fadeIn second">
+      <form [formGroup]="getPermisForm">
+        <div *ngIf="validMessage != ''">
+          <h3 class="has-info">{{ validMessage }}</h3>
+        </div>
+
+        <div class="form-group">
+          <label for="citoyen" Subscription Type>Choisir pour qui</label>
+          <select class="form-control" id="citoyen" formControlName="citoyen">
+            <option [value]="citoyen.idUser">{{citoyen.prenom}}</option>
+            <!-- enfants-->
+            <option *ngFor="let enfant of enfants" [value]="enfant.idChild">
+              {{enfant.prenom}}
+            </option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="email">Email addresse</label>
+          <input type="email" class="form-control" id="email" placeholder="name@example.com" formControlName="email" />
+        </div>
+
+        <div class="fadeIn third">
+          <input type="submit" id="sendEmail" value="Envoyer par courriel" />
+          <input type="submit" id="openPDF" value="Ouvrir PDF" />
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

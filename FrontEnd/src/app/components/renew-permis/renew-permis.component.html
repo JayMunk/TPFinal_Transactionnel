@@ -1,0 +1,27 @@
+<div class="wrapper fadeInDown">
+  <div id="formContent">
+    <div class="fadeIn first">
+      <img src="./../../../assets/images/logo-MSSS.jpg" id="icon" alt="logo-MSSS" />
+      <h3>Renouvellement du permis de type test</h3>
+    </div>
+    <div class="fadeIn second">
+      <form [formGroup]="renewPermisForm" (ngSubmit)="onSubmit()">
+        <div *ngIf="validMessage != ''">
+          <h3 class="has-info">{{ validMessage }}</h3>
+        </div>
+
+        <div class="form-group">
+          <label for="citoyenID" Subscription Type>Choisir pour qui</label>
+          <select class="form-control" id="citoyenID" formControlName="citoyenID">
+            <option [value]="citoyen.idUser">{{citoyen.prenom}}</option>
+            <!-- enfants-->
+            <option *ngFor="let enfant of enfants" [value]="enfant.idChild">
+              {{enfant.prenom}}
+            </option>
+          </select>
+        </div>
+        <input type="submit" class="fadeIn third" value="Renouveller permis" />
+      </form>
+    </div>
+  </div>
+</div>
